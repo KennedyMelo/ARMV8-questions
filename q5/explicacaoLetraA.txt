@@ -1,0 +1,5 @@
+O comando seria RPT Registrador Destino, Registrador Base1, Registrador Registrador Base2
+
+Registrador Destino -> Resgistrador que irei receber o retorno do comando
+Registrador Base1 -> Valor máximo que seto, ex: if(X12>0){X12 = X12-1; go to loop} //X12 é o valor máximo antes da primeira iteração
+Registrador Base2 -> Valor mínimo até onde vou, ex: if(X12>0){X12 = X12-1; go to loop} //0 é o valor mínimo
