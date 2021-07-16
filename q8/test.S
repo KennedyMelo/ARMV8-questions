@@ -2,16 +2,22 @@
 
 test:
     MOV X21, X0 // X21 = X0 (pego o endereço da string e coloco em X21)
-
+    MOV X0, XZR // X0 = 0
 loop:
-    LDUR X22, [X21, #0] 
-    SUB X22, [X22, #0]
-    LDUR X19, [X11, #0] // X19 = n
+    LDRSB X19, [X21, #0] 
+    CMP X19, #0 // Caso chegue ao fim da string, vou para return
+    B.EQ return
+    
+    SUB X19, X19, '0' // converto de char para long long int
+    
     MOV X10, X30 // salvo o endereço de retorno
     Bl fact
-    
     MOV X30, X10 // recupero o endereço de retorno
-    B return
+    
+    ADD X0, X0, X20  // X0 += X20 (vou adicionando os fatoriais ao valor total)
+    ADD X21, X21, #1 // Vou para próxima posição da string
+    
+    B loop
     
 fact:
     SUB SP, SP, #16 //ponho na pilha o endereço de retorno e o n
@@ -33,5 +39,4 @@ L1:
     BR LR 
 
 return: // apenas retorno (término)
-    MOV X0, X20 // o que irei retornar
     BR X30
