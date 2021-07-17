@@ -2,7 +2,7 @@
 
 test:
     MOV X21, X0 // X21 = X0 (pego o endereço da string1 e coloco em X21)
-    MOV X0, #9 // X0 = 0(X0 seŕa a quantidade de palavras que posso formar), inicialmente coloco como valor muito alto
+    MOV X0, 0xfffffffff // X0 = 0(X0 seŕa a quantidade de palavras que posso formar), inicialmente coloco como valor muito alto
     MOV X23, X21 // coloco o endereço inicial da string1 no X23, pois irei iterar pela string1 várias vezes
     B loop2 
      
